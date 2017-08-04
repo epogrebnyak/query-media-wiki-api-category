@@ -64,6 +64,7 @@ class WikiClient():
                 #           yield backlink['title']               
 
             # Check if we need to continue making requests
+            
             if len(page_ids) >= limit:
                 must_continue = False
             elif 'continue' not in data:
@@ -99,14 +100,7 @@ class WikiClient():
     
 if "__main__" == __name__:    
 
-    d =  WikiClient().get_page_data(title = "P569")
+    d = WikiClient().get_page_data(title = "P569")
     
-    # Gives me:
-    #    
-    # SSLError: ("bad handshake: Error([('SSL routines', 'ssl3_get_server_certificate', 'certificate verify failed')],)",)
-    # will try on another computer!
-    #
-    # for reference: https://github.com/requests/requests/issues/3212
-    #
-  
+    e = WikiClient().get_backlinked_pages("Q1209166")
     
