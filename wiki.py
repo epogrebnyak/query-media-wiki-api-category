@@ -9,8 +9,8 @@ class WikiClient():
         - get_page_data()
 
     Attributes:
-        endpoint_url (str)  url of a MediaWiki API backend
-            Defauilts to 'https://www.wikidata.org/w/api.php'
+        endpoint_url (str) - url of a MediaWiki API backend
+                             Defaults to 'https://www.wikidata.org/w/api.php'
     """
 
     def __init__(self, url=False):
@@ -102,5 +102,5 @@ if "__main__" == __name__:
 
     d = WikiClient().get_page_data(title = "P569")
     
-    e = WikiClient().get_backlinked_pages("Q1209166")
+    e = WikiClient().get_backlinked_pages("Q1209166", 20)
     
