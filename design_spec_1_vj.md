@@ -1,35 +1,47 @@
 a) Mail Receiving Design:
 
-1 Configure the AWS Simple Email Service (SES) to receive emails 
-2 Create the S3 bucket 
-3 Cofigure logs of receiving email to S3 bucket
-4 Configure the SES to save to S3
+- Configure the AWS Simple Email Service (SES) to receive emails 
+- Create the S3 bucket 
+- Cofigure logs of receiving email to S3 bucket
+- Configure the SES to save to S3
 
 Optional:
+
  - configure to send emails
  - configure domian name
  
 b) Parser - Lambda Function
-- Triggered from S3 upload event 
+- triggered from S3 upload event 
 - parse email body to extract 4 fileds:
   - upper block of text 
   - sender email 
   - sender name 
   - timestamp recieved
-- insert into database.
+- insert into database
 
 c) Database:
- - TODO (Vijay): which one and where is hosted
- 
-d) Admin web frontend (flask/eb)
- - NOT TODO. need API for this? 
+- [DynamoDB](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) 
+- Mongo?
 
-e) User web frontend (flask/eb)
- - NOT TODO. need API for this?
+d) Admin web frontend (flask/[ebtalk][ebt] or ec2)
+More here (EP): list actions taken by Admin 
+
+e) User web frontend (flask/[ebtalk][ebt] or ec2)
+More here (EP): list actions taken by Admin
+
+[ebt]: https://aws.amazon.com/ru/elasticbeanstalk/
+
+Use [AWS Cognito User Pool](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html) for the user authentication.
+
+> Cognito is best option which for the sign up/ sign in/ with user data, FB/TW or other social accounts with JWT tokens
+> Other option is store the user data to database and validate those.
  
-Authentication Mechanism:   
- - AWS Cognito User Pool for the user authentication. http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
- - TODO (Vijay): other options? are they needed?
+ Testing
+ -------
+ 
+ - <https://github.com/spulec/moto>: a library that allows your python tests to easily mock out the boto library
+ - mocking out a database? <https://stackoverflow.com/questions/145131/whats-the-best-strategy-for-unit-testing-database-driven-applications>
+ 
  
 Comments
 -------- 
@@ -37,11 +49,10 @@ Comments
 Application Infrastructre:
 
 1. Create the Elastic Beanstalk web application with Python platform. Upload your application flask code.
-2. Create the environments like test, development, staging, production etc.
-2. Create the new database and configure that with EBS web application.
-3. Whenever there will be code changes, need to deploy the EBS.
-4. If require, we can add the custom domain setting for the EBS url.
-5. Create the AWS Cognito User Pool for the user authentication. http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
+3. Create the environments like test, development, staging, production etc.
+3. Create the new database and configure that with EBS web application.
+4. Whenever there will be code changes, need to deploy the EBS.
+5. If require, we can add the custom domain setting for the EBS url.
 
 
 Application Features:
