@@ -102,4 +102,10 @@ if "__main__" == __name__:
 
     d = WikiClient().get_page_data(title = "P569")
     
-    e = WikiClient().get_backlinked_pages("Q5")   
+    e = WikiClient().get_backlinked_pages("Q5")    
+    assert len(e) == 500    
+    
+    # any pagination available? something like a pointer to next 500 entries? 
+    # somehow it gets linked here 
+    # https://www.wikidata.org/w/index.php?title=Special:WhatLinksHere/Q5&limit=500&from=10643&back=7545
+    
