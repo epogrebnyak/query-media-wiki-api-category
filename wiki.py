@@ -102,5 +102,4 @@ if "__main__" == __name__:
 
     d = WikiClient().get_page_data(title = "P569")
     
-    e = WikiClient().get_backlinked_pages("Q1209166", 20)
-    
+    e = WikiClient().get_backlinked_pages("Q5")   
