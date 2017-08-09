@@ -33,10 +33,6 @@ class WikiClient():
         Returns:
             list(str): The titles of pages that backlink to `title`
         """
-        # The largest batch size allowed by WikiData is 500
-        # Ensure our limit is less than that.        
-        if not limit or limit > 500:
-            limit = 500
         if not isinstance(limit, int) or limit < 1:
             raise ValueError(limit)
         # EP: at this point limit is int type and likely has value 5000  
