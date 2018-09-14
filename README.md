@@ -42,5 +42,22 @@ entity = client.get('Q5', load=True)
 dir(entity)
 ```
 
+From gist
+---------
+
+
+Are we documenting past or present? Some reflections on Wikipedia person pages dataset.
+
+<https://stackoverflow.com/questions/4017166/how-do-i-get-all-articles-about-people-from-wikipedia>
+<https://stackoverflow.com/questions/30091337/how-to-retrieve-biographical-information-of-a-person-using-wikipedias-web-api>
+
+```python
+import wptools
+p = wptools.page('Mahatma_Gandhi').get()
+print(p)
+```
+
+
+
 
 
